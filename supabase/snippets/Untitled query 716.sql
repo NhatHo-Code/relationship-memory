@@ -1,0 +1,1 @@
+insert into relationship_spaces (name, created_by) values ('Test', '4838f249-f5b2-4662-982e-4dcde19819de') returning id;
