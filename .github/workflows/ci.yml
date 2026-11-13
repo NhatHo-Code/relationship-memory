@@ -15,6 +15,18 @@ jobs:
           node-version-file: .node-version
           cache: pnpm
       - run: pnpm install --frozen-lockfile
+      - uses: supabase/setup-cli@v1
+        with:
+          version: latest
+      - run: supabase start
+      - name: Export Supabase env
+        run: |
+          supabase status -o json > /tmp/sb.json
+          echo "SUPABASE_URL=$(jq -r .API_URL /tmp/sb.json)" >> "$GITHUB_ENV"
+          echo "DATABASE_URL=$(jq -r .DB_URL /tmp/sb.json)" >> "$GITHUB_ENV"
+          echo "SUPABASE_ANON_KEY=$(jq -r .ANON_KEY /tmp/sb.json)" >> "$GITHUB_ENV"
+          echo "SUPABASE_SERVICE_ROLE_KEY=$(jq -r .SERVICE_ROLE_KEY /tmp/sb.json)" >> "$GITHUB_ENV"
+          echo "NODE_ENV=test" >> "$GITHUB_ENV"
       - run: pnpm lint
       - run: pnpm typecheck
       - run: pnpm test

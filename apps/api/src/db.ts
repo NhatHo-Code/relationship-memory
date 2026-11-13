@@ -5,3 +5,5 @@ export const sql = postgres(config.DATABASE_URL, {
   max: 10,
   transform: postgres.camel,
 });
+
+export type Db = typeof sql | postgres.TransactionSql;

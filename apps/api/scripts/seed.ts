@@ -37,6 +37,7 @@ async function main() {
       values ('Alice & Bob', ${alice})
       returning id
     `;
+    if (!space) throw new Error("Failed to create space");
     const spaceId = space.id as string;
 
     await tx`
@@ -51,6 +52,7 @@ async function main() {
       values ('Carol''s space', ${carol})
       returning id
     `;
+    if (!carolSpace) throw new Error("Failed to create Carol's space");
     await tx`
       insert into space_memberships (space_id, user_id, role)
       values (${carolSpace.id}, ${carol}, 'owner')
