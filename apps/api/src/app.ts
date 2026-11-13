@@ -4,6 +4,7 @@ import { sql } from "./db.js";
 import { logger } from "./logger.js";
 import { errorHandler, notFoundHandler } from "./middleware/error.js";
 import { identityRouter } from "./modules/identity/routes.js";
+import { memoryRouter } from "./modules/memory/routes.js";
 import { relationshipRouter } from "./modules/relationship/routes.js";
 
 export function createApp() {
@@ -22,6 +23,7 @@ export function createApp() {
 
   app.use("/v1", identityRouter);
   app.use("/v1", relationshipRouter);
+  app.use("/v1", memoryRouter);
 
   app.use(notFoundHandler);
   app.use(errorHandler);
