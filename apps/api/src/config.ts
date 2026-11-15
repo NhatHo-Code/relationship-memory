@@ -16,6 +16,9 @@ const envSchema = z.object({
   SUPABASE_URL: z.url(),
   SUPABASE_ANON_KEY: z.string().min(1),
   SUPABASE_SERVICE_ROLE_KEY: z.string().min(1),
+  LLM_PROVIDER: z.enum(["fake", "gemini", "openai"]).default("fake"),
+  LLM_API_KEY: z.string().optional(),
+  EMBEDDING_DIM: z.coerce.number().int().default(768),
 });
 
 const parsed = envSchema.safeParse(process.env);

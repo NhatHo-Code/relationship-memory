@@ -1,7 +1,8 @@
 import { sql } from "./db.js";
 import { logger } from "./logger.js";
 import { pgmqQueue } from "./lib/queue.js";
-import { processIngestJob } from "./modules/ai/ingest.js";
+import { makeIngestProcessor } from "./modules/ai/ingest.js";
+import { getProvider } from "./modules/ai/index.js";
 import { runOnce } from "./modules/ai/worker-loop.js";
 
 let running = true;
@@ -17,7 +18,7 @@ const sleep = (ms: number) => new Promise<void>((r) => setTimeout(r, ms));
 logger.info("Worker started");
 
 while (running) {
-  const handled = await runOnce({ queue: pgmqQueue, processor: processIngestJob });
+  const handled = await runOnce({ queue: pgmqQueue, processor: makeIngestProcessor(getProvider()) });
   if (handled === 0) await sleep(1000);
 }
 

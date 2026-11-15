@@ -1,8 +1,8 @@
 import { sql } from "../../db.js";
 import { logger } from "../../logger.js";
 import type { Job, JobQueue } from "../../lib/queue.js";
-import { INGEST_QUEUE, type IngestPayload } from "./jobs.js";
 import type { IngestResult } from "./ingest.js";
+import { INGEST_QUEUE, type IngestPayload } from "./jobs.js";
 
 export interface WorkerOptions {
   queue: JobQueue;

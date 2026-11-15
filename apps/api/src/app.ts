@@ -4,10 +4,17 @@ import { sql } from "./db.js";
 import { logger } from "./logger.js";
 import { errorHandler, notFoundHandler } from "./middleware/error.js";
 import { identityRouter } from "./modules/identity/routes.js";
+import { makeAiRouter } from "./modules/ai/routes.js";
+import { getProvider } from "./modules/ai/index.js";
 import { memoryRouter } from "./modules/memory/routes.js";
 import { relationshipRouter } from "./modules/relationship/routes.js";
+import type { LLMProvider } from "./modules/ai/provider.js";
 
-export function createApp() {
+interface AppDeps {
+  provider: LLMProvider;
+}
+
+export function createApp(deps: AppDeps = { provider: getProvider() }) {
   const app = express();
   app.use(express.json({ limit: "100kb" }));
   app.use(pinoHttp({ logger }));
@@ -24,6 +31,7 @@ export function createApp() {
   app.use("/v1", identityRouter);
   app.use("/v1", relationshipRouter);
   app.use("/v1", memoryRouter);
+  app.use("/v1", makeAiRouter(deps.provider));
 
   app.use(notFoundHandler);
   app.use(errorHandler);
