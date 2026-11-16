@@ -25,6 +25,17 @@ erDiagram
   MEMORIES ||--o{ MEMORY_CHUNKS : "embedded as"
 ```
 
+## AI / LLM provider
+
+The worker embeds memories using a configurable LLM provider (`LLM_PROVIDER` in `.env`).
+
+| Provider | Data sent | Notes |
+|---|---|---|
+| `fake` | Nothing — hash-based vectors, no network calls | Used in CI and tests |
+| `gemini` | Memory title + body chunks to Google Generative Language API | Gemini free-tier data **may be used by Google to improve their models**. Only send dummy/seed data on free tier (FR-18.6, FR-18.7). Use a paid API key for real couple data. |
+
+The API key is never logged or included in responses. It lives only in `apps/api/.env` (gitignored).
+
 ## How to run
 
 **Requirements:** Node LTS, pnpm, Docker Desktop, Supabase CLI

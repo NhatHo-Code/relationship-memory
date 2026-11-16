@@ -76,7 +76,10 @@ async function main() {
       { space_id: carolSpace.id as string, creator_id: carol, title: 'Carol solo hike Fansipan', body: 'Made it to the summit alone. Cold, foggy, worth every step.', event_date: '2023-08-15', visibility: 'shared' },
     ];
 
-    await tx`insert into memories ${tx(memories)}`;
+    const inserted = await tx`insert into memories ${tx(memories)} returning id, version`;
+    for (const m of inserted) {
+      await tx`select pgmq.send('memory_ingest', jsonb_build_object('memoryId', ${m.id as string}, 'version', ${m.version as number}))`;
+    }
   });
 
   console.log("Seed complete:", { alice, bob, carol });
