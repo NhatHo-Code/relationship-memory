@@ -10,11 +10,13 @@ export function chunkText(text: string, maxChars = 1500): string[] {
         chunks.push(current.trim());
         current = "";
       }
-      // hard-split the oversized paragraph
+      // hard-split at word boundary to avoid cutting mid-word
       let remaining = para;
       while (remaining.length > maxChars) {
-        chunks.push(remaining.slice(0, maxChars));
-        remaining = remaining.slice(maxChars);
+        const boundary = remaining.lastIndexOf(" ", maxChars);
+        const cut = boundary > maxChars * 0.5 ? boundary : maxChars;
+        chunks.push(remaining.slice(0, cut));
+        remaining = remaining.slice(cut).trimStart();
       }
       if (remaining.trim()) current = remaining;
     } else if (current.length + para.length + 2 > maxChars) {

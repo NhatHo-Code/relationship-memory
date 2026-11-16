@@ -78,7 +78,7 @@ async function main() {
 
     const inserted = await tx`insert into memories ${tx(memories)} returning id, version`;
     for (const m of inserted) {
-      await tx`select pgmq.send('memory_ingest', jsonb_build_object('memoryId', ${m.id as string}, 'version', ${m.version as number}))`;
+      await tx`select pgmq.send('memory_ingest', jsonb_build_object('memoryId', ${m.id as string}::text, 'version', ${m.version as number}::int))`;
     }
   });
 
