@@ -25,6 +25,26 @@ describe("chunkText", () => {
     expect(total).toBeGreaterThanOrEqual(para.length * 3 - 10);
   });
 
+  it("long paragraph splits at sentence boundaries, never mid-sentence", () => {
+    const sentences = Array.from({ length: 10 }, (_, i) => `Sentence number ${i} is about our trip.`);
+    const chunks = chunkText(sentences.join(" "), 100);
+    expect(chunks.length).toBeGreaterThan(1);
+    for (const c of chunks) {
+      expect(c.length).toBeLessThanOrEqual(100);
+      expect(c.endsWith(".")).toBe(true);
+      expect(c.startsWith("Sentence")).toBe(true);
+    }
+  });
+
+  it("sentence longer than max falls back to word boundary", () => {
+    const text = Array.from({ length: 50 }, () => "motorbike").join(" ");
+    const chunks = chunkText(text, 100);
+    for (const c of chunks) {
+      expect(c.length).toBeLessThanOrEqual(100);
+      expect(c.split(" ").every((w) => w === "motorbike")).toBe(true);
+    }
+  });
+
   it("single paragraph 4000 chars → 3 chunks with maxChars=1500", () => {
     const text = "a".repeat(4000);
     const chunks = chunkText(text, 1500);
