@@ -1,0 +1,145 @@
+{
+  "score": "14/15",
+  "pct": 93,
+  "results": [
+    {
+      "id": "q1",
+      "question": "Buổi hẹn đầu tiên của tụi mình ở đâu?",
+      "pass": true,
+      "reason": "ok",
+      "found": true,
+      "sources": [
+        "First date at Phở Hòa"
+      ]
+    },
+    {
+      "id": "q2",
+      "question": "Alice thích ăn gì nhất?",
+      "pass": false,
+      "reason": "found=false titlesOk=true mustOk=true",
+      "found": false,
+      "sources": []
+    },
+    {
+      "id": "q3",
+      "question": "Chúng mình đã đi du lịch ở đâu cùng nhau?",
+      "pass": true,
+      "reason": "ok",
+      "found": true,
+      "sources": [
+        "Alice journal – first fight",
+        "Trip to Đà Lạt"
+      ]
+    },
+    {
+      "id": "q4",
+      "question": "Kỷ niệm ngày sinh nhật của Bob?",
+      "pass": true,
+      "reason": "ok",
+      "found": true,
+      "sources": [
+        "Bob's birthday dinner"
+      ]
+    },
+    {
+      "id": "q5",
+      "question": "Tụi mình xem phim gì cùng nhau?",
+      "pass": true,
+      "reason": "ok",
+      "found": true,
+      "sources": [
+        "Movie night – Everything Everywhere"
+      ]
+    },
+    {
+      "id": "q6",
+      "question": "Tụi mình đã học nấu ăn không?",
+      "pass": true,
+      "reason": "ok",
+      "found": true,
+      "sources": [
+        "Cooking class together"
+      ]
+    },
+    {
+      "id": "q7",
+      "question": "Chuyến đi Đà Lạt có gì đáng nhớ?",
+      "pass": true,
+      "reason": "ok",
+      "found": true,
+      "sources": [
+        "Trip to Đà Lạt"
+      ]
+    },
+    {
+      "id": "q8",
+      "question": "Lần đầu hẹn hò của tụi mình ăn gì?",
+      "pass": true,
+      "reason": "ok",
+      "found": true,
+      "sources": [
+        "First date at Phở Hòa"
+      ]
+    },
+    {
+      "id": "q9",
+      "question": "Lớp học nấu ăn của tụi mình diễn ra thế nào?",
+      "pass": true,
+      "reason": "ok",
+      "found": true,
+      "sources": [
+        "Cooking class together"
+      ]
+    },
+    {
+      "id": "q10",
+      "question": "Alice có phản ứng thế nào khi xem phim Everything Everywhere?",
+      "pass": true,
+      "reason": "ok",
+      "found": true,
+      "sources": [
+        "Movie night – Everything Everywhere"
+      ]
+    },
+    {
+      "id": "q11",
+      "question": "Bob có thú cưng không?",
+      "pass": true,
+      "reason": "ok",
+      "found": false,
+      "sources": []
+    },
+    {
+      "id": "q12",
+      "question": "Alice học trường đại học nào?",
+      "pass": true,
+      "reason": "ok",
+      "found": false,
+      "sources": []
+    },
+    {
+      "id": "q13",
+      "question": "Xe máy của Bob màu gì?",
+      "pass": true,
+      "reason": "ok",
+      "found": false,
+      "sources": []
+    },
+    {
+      "id": "q14",
+      "question": "Alice có kế hoạch bí mật gì liên quan đến nhẫn không?",
+      "pass": true,
+      "reason": "ok",
+      "found": false,
+      "sources": []
+    },
+    {
+      "id": "q15",
+      "question": "Bob có kế hoạch cầu hôn gì không?",
+      "pass": true,
+      "reason": "ok",
+      "found": false,
+      "sources": []
+    }
+  ]
+}

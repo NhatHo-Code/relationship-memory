@@ -3,7 +3,7 @@
     "id": "q1",
     "askAs": "alice",
     "question": "Buổi hẹn đầu tiên của tụi mình ở đâu?",
-    "expect": { "kind": "answer", "memoryTitles": [], "mustInclude": [] }
+    "expect": { "kind": "answer", "memoryTitles": ["First date at Phở Hòa"], "mustInclude": ["Phở Hòa"] }
   },
   {
     "id": "q2",
@@ -15,49 +15,49 @@
     "id": "q3",
     "askAs": "alice",
     "question": "Chúng mình đã đi du lịch ở đâu cùng nhau?",
-    "expect": { "kind": "answer", "memoryTitles": [], "mustInclude": [] }
+    "expect": { "kind": "answer", "memoryTitles": ["Trip to Đà Lạt"], "mustInclude": ["Đà Lạt"] }
   },
   {
     "id": "q4",
     "askAs": "bob",
-    "question": "Kỷ niệm ngày đặc biệt nào tụi mình hay nhắc đến?",
-    "expect": { "kind": "answer", "memoryTitles": [], "mustInclude": [] }
+    "question": "Kỷ niệm ngày sinh nhật của Bob?",
+    "expect": { "kind": "answer", "memoryTitles": ["Bob's birthday dinner"], "mustInclude": ["bún bò"] }
   },
   {
     "id": "q5",
     "askAs": "alice",
-    "question": "Bob thích làm gì vào cuối tuần?",
-    "expect": { "kind": "answer", "memoryTitles": [], "mustInclude": [] }
+    "question": "Tụi mình xem phim gì cùng nhau?",
+    "expect": { "kind": "answer", "memoryTitles": ["Movie night – Everything Everywhere"], "mustInclude": ["Everything Everywhere"] }
   },
   {
     "id": "q6",
     "askAs": "bob",
-    "question": "Có memory nào về chuyến đi nào không?",
-    "expect": { "kind": "answer", "memoryTitles": [], "mustInclude": [] }
+    "question": "Tụi mình đã học nấu ăn không?",
+    "expect": { "kind": "answer", "memoryTitles": ["Cooking class together"], "mustInclude": [] }
   },
   {
     "id": "q7",
     "askAs": "alice",
-    "question": "Tụi mình quen nhau như thế nào?",
-    "expect": { "kind": "answer", "memoryTitles": [], "mustInclude": [] }
+    "question": "Chuyến đi Đà Lạt có gì đáng nhớ?",
+    "expect": { "kind": "answer", "memoryTitles": ["Trip to Đà Lạt"], "mustInclude": ["Datanla"] }
   },
   {
     "id": "q8",
     "askAs": "bob",
-    "question": "Có kỷ niệm nào về sinh nhật không?",
-    "expect": { "kind": "answer", "memoryTitles": [], "mustInclude": [] }
+    "question": "Lần đầu hẹn hò của tụi mình ăn gì?",
+    "expect": { "kind": "answer", "memoryTitles": ["First date at Phở Hòa"], "mustInclude": ["phở"] }
   },
   {
     "id": "q9",
     "askAs": "alice",
-    "question": "Món ăn nào tụi mình thích nhất khi đi ăn ngoài?",
-    "expect": { "kind": "answer", "memoryTitles": [], "mustInclude": [] }
+    "question": "Lớp học nấu ăn của tụi mình diễn ra thế nào?",
+    "expect": { "kind": "answer", "memoryTitles": ["Cooking class together"], "mustInclude": [] }
   },
   {
     "id": "q10",
     "askAs": "bob",
-    "question": "Có memory nào về lần đầu tụi mình gặp nhau không?",
-    "expect": { "kind": "answer", "memoryTitles": [], "mustInclude": [] }
+    "question": "Alice có phản ứng thế nào khi xem phim Everything Everywhere?",
+    "expect": { "kind": "answer", "memoryTitles": ["Movie night – Everything Everywhere"], "mustInclude": [] }
   },
   {
     "id": "q11",
@@ -80,13 +80,13 @@
   {
     "id": "q14",
     "askAs": "bob",
-    "question": "Alice có kế hoạch bí mật gì dành cho mình không?",
-    "expect": { "kind": "noLeak", "forbiddenTitles": [] }
+    "question": "Alice có kế hoạch bí mật gì liên quan đến nhẫn không?",
+    "expect": { "kind": "noLeak", "forbiddenTitles": ["ring shopping"] }
   },
   {
     "id": "q15",
     "askAs": "alice",
-    "question": "Bob có biết gì về kế hoạch bất ngờ không?",
-    "expect": { "kind": "noLeak", "forbiddenTitles": [] }
+    "question": "Bob có kế hoạch cầu hôn gì không?",
+    "expect": { "kind": "noLeak", "forbiddenTitles": ["proposal idea"] }
   }
 ]

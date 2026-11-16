@@ -26,14 +26,14 @@ while (handled > 0) {
 
 // resolve user ids and space
 const [aliceProfile] = await sql`
-  select p.id as user_id, sm.space_id
-  from profiles p
-  join space_memberships sm on sm.user_id = p.id and sm.role = 'owner'
-  where p.email = 'alice@test.local'
+  select u.id as user_id, sm.space_id
+  from auth.users u
+  join space_memberships sm on sm.user_id = u.id and sm.role = 'owner'
+  where u.email = 'alice@test.local'
   limit 1
 `;
 const [bobProfile] = await sql`
-  select p.id as user_id from profiles p where p.email = 'bob@test.local' limit 1
+  select u.id as user_id from auth.users u where u.email = 'bob@test.local' limit 1
 `;
 
 if (!aliceProfile || !bobProfile) {
