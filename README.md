@@ -36,6 +36,14 @@ The worker embeds memories using a configurable LLM provider (`LLM_PROVIDER` in 
 
 The API key is never logged or included in responses. It lives only in `apps/api/.env` (gitignored).
 
+## AI chat eval
+
+`pnpm --filter @rm/api eval` runs 15 questions (10 answer, 3 unknown, 2 noLeak) against the seed data and exits with code 1 below 90%.
+
+| Date | Provider | Score | Notes |
+|---|---|---|---|
+| 2026-11-16 | gemini | 14/15 (93%) | noLeak 2/2; q2 returned found=false |
+
 ## How to run
 
 **Requirements:** Node LTS, pnpm, Docker Desktop, Supabase CLI

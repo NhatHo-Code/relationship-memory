@@ -1,5 +1,5 @@
 import { Router } from "express";
-import rateLimit from "express-rate-limit";
+import rateLimit, { ipKeyGenerator } from "express-rate-limit";
 import { chatRequestSchema, spaceIdParamsSchema } from "@rm/shared";
 import { parse } from "../../lib/parse.js";
 import { currentUser, requireAuth } from "../../middleware/auth.js";
@@ -13,7 +13,7 @@ export function makeAiRouter(provider: LLMProvider) {
   const chatRateLimit = rateLimit({
     windowMs: 60 * 1000,
     limit: 10,
-    keyGenerator: (req) => req.user?.id ?? req.ip ?? "anon",
+    keyGenerator: (req) => req.user?.id ?? ipKeyGenerator(req.ip ?? "anon"),
     standardHeaders: true,
     legacyHeaders: false,
   });
