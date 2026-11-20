@@ -99,7 +99,7 @@ describe("AI chat", () => {
   });
 
   it("fabricated sourceId from LLM is filtered out", async () => {
-    const mem = await createMemoryAs(app, ctx.alice, ctx.spaceId, {
+    await createMemoryAs(app, ctx.alice, ctx.spaceId, {
       title: "Real memory",
       body: "Some real content about our trip",
       visibility: "shared",

@@ -1,7 +1,7 @@
 import { afterAll, beforeAll, describe, expect, it } from "vitest";
 import { createApp } from "../src/app.js";
 import { sql } from "../src/db.js";
-import { auth, createTestUser } from "./helpers/auth.js";
+import { auth } from "./helpers/auth.js";
 import { createCoupleSpace, createMemoryAs } from "./helpers/factories.js";
 import request, { type Test } from "supertest";
 import type { MemoryDto, Visibility } from "@rm/shared";

@@ -1,3 +1,3 @@
-export * from "./schemas/ai.js";
-export * from "./schemas/memory.js";
-export * from "./schemas/space.js";
+export * from "./schemas/ai";
+export * from "./schemas/memory";
+export * from "./schemas/space";

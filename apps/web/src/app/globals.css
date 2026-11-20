@@ -1,0 +1,159 @@
+@import "tailwindcss";
+@import "@heroui/styles";
+
+/* App shell: warm ivory, navy-charcoal text, dusty rose accent only for primary actions. */
+:root {
+  --radius: 0.75rem;
+
+  --background: oklch(0.975 0.008 80);
+  --foreground: oklch(0.27 0.03 260);
+  --surface: oklch(0.995 0.004 80);
+  --surface-secondary: oklch(0.955 0.01 75);
+  --surface-tertiary: oklch(0.93 0.012 75);
+  --overlay: oklch(0.995 0.004 80);
+  --muted: oklch(0.5 0.02 260);
+  --default: oklch(0.94 0.01 75);
+  --default-foreground: var(--foreground);
+  --field-background: oklch(0.995 0.004 80);
+  --field-foreground: var(--foreground);
+  --field-border: oklch(0.88 0.012 75);
+  --border: oklch(0.9 0.01 75);
+  --separator: oklch(0.92 0.01 75);
+  --accent: oklch(0.56 0.11 18);
+  --accent-foreground: oklch(0.99 0.005 80);
+  --link: var(--accent);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    color-scheme: dark;
+    --background: oklch(0.2 0.025 260);
+    --foreground: oklch(0.93 0.01 80);
+    --surface: oklch(0.245 0.026 260);
+    --surface-secondary: oklch(0.28 0.026 260);
+    --surface-tertiary: oklch(0.31 0.026 260);
+    --overlay: oklch(0.26 0.026 260);
+    --muted: oklch(0.72 0.02 260);
+    --default: oklch(0.3 0.025 260);
+    --field-background: oklch(0.26 0.026 260);
+    --field-border: oklch(0.36 0.024 260);
+    --border: oklch(0.33 0.022 260);
+    --separator: oklch(0.3 0.022 260);
+    --accent: oklch(0.74 0.1 18);
+    --accent-foreground: oklch(0.2 0.025 260);
+    --backdrop: rgba(0, 0, 0, 0.6);
+  }
+}
+
+/* Couple pages. Derived tokens are re-declared because they resolve where they are defined. */
+[data-couple-theme] {
+  background: var(--background);
+  color: var(--foreground);
+  --surface-hover: color-mix(in oklab, var(--surface) 92%, var(--surface-foreground) 8%);
+  --accent-hover: color-mix(in oklab, var(--accent) 90%, var(--accent-foreground) 10%);
+  --accent-soft: color-mix(in oklab, var(--accent) 15%, transparent);
+  --accent-soft-foreground: color-mix(in oklab, var(--accent) 70%, var(--foreground) 30%);
+  --default-soft: color-mix(in oklab, var(--default) 50%, transparent);
+  --focus: var(--accent);
+  --surface-foreground: var(--foreground);
+  --default-foreground: var(--foreground);
+  --field-foreground: var(--foreground);
+}
+
+[data-couple-theme="polaroid"] {
+  --background: oklch(0.96 0.022 85);
+  --foreground: oklch(0.3 0.04 50);
+  --surface: oklch(0.99 0.012 85);
+  --surface-secondary: oklch(0.94 0.025 80);
+  --muted: oklch(0.49 0.035 55);
+  --default: oklch(0.92 0.025 80);
+  --border: oklch(0.86 0.03 75);
+  --field-background: oklch(0.99 0.012 85);
+  --accent: oklch(0.5 0.14 32);
+  --accent-foreground: oklch(0.99 0.01 85);
+}
+
+@media (prefers-color-scheme: dark) {
+  [data-couple-theme="polaroid"] {
+    --background: oklch(0.22 0.02 50);
+    --foreground: oklch(0.93 0.02 85);
+    --surface: oklch(0.27 0.022 50);
+    --surface-secondary: oklch(0.3 0.022 50);
+    --muted: oklch(0.74 0.03 70);
+    --default: oklch(0.32 0.022 50);
+    --border: oklch(0.38 0.025 55);
+    --field-background: oklch(0.27 0.022 50);
+    --accent: oklch(0.72 0.13 35);
+    --accent-foreground: oklch(0.22 0.02 50);
+  }
+}
+
+@theme inline {
+  --font-sans: var(--font-body), ui-sans-serif, system-ui, sans-serif;
+  --font-serif: var(--font-display), Georgia, "Times New Roman", serif;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+h1,
+h2,
+h3 {
+  text-wrap: balance;
+}
+
+.prose-story {
+  max-width: 65ch;
+}
+
+@keyframes reveal {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes saved-glow {
+  0% {
+    box-shadow: 0 0 0 0 color-mix(in oklab, var(--accent) 45%, transparent);
+  }
+  100% {
+    box-shadow: 0 0 0 14px transparent;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  @supports (animation-timeline: view()) {
+    .reveal {
+      animation: reveal linear both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 35%;
+    }
+  }
+
+  .just-saved {
+    animation: saved-glow 1.2s ease-out 2;
+  }
+}
+
+:target {
+  scroll-margin-top: 7rem;
+}
+
+:target .memory-card {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
