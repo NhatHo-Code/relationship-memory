@@ -1,4 +1,6 @@
+import cors from "cors";
 import express from "express";
+import { config } from "./config.js";
 import pinoHttp from "pino-http";
 import { sql } from "./db.js";
 import { logger } from "./logger.js";
@@ -16,6 +18,13 @@ interface AppDeps {
 
 export function createApp(deps: AppDeps = { provider: getProvider() }) {
   const app = express();
+  app.use(
+    cors({
+      origin: config.WEB_ORIGIN,
+      methods: ["GET", "POST", "PATCH", "DELETE"],
+      allowedHeaders: ["Authorization", "Content-Type"],
+    }),
+  );
   app.use(express.json({ limit: "100kb" }));
   app.use(pinoHttp({ logger }));
 

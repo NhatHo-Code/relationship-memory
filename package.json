@@ -9,7 +9,9 @@
     "test": "pnpm -r test",
     "lint": "eslint .",
     "format": "prettier --write .",
-    "db:reset": "supabase db reset && pnpm --filter @rm/api seed"
+    "db:reset": "supabase db reset && pnpm --filter @rm/api seed",
+    "dev:web": "pnpm --filter @rm/web dev",
+    "dev:worker": "pnpm --filter @rm/api worker"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",

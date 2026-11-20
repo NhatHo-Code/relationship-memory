@@ -19,6 +19,7 @@ const envSchema = z.object({
   LLM_PROVIDER: z.enum(["fake", "gemini", "openai"]).default("fake"),
   LLM_API_KEY: z.string().optional(),
   EMBEDDING_DIM: z.coerce.number().int().default(768),
+  WEB_ORIGIN: z.url().default("http://localhost:3000"),
 });
 
 const parsed = envSchema.safeParse(process.env);
