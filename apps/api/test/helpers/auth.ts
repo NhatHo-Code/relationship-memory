@@ -1,6 +1,10 @@
 import { createClient } from "@supabase/supabase-js";
 import { config } from "../../src/config.js";
 
+if (!config.SUPABASE_SERVICE_ROLE_KEY || !config.SUPABASE_ANON_KEY) {
+  throw new Error("Tests need SUPABASE_SERVICE_ROLE_KEY and SUPABASE_ANON_KEY");
+}
+
 const admin = createClient(config.SUPABASE_URL, config.SUPABASE_SERVICE_ROLE_KEY, {
   auth: { persistSession: false },
 });

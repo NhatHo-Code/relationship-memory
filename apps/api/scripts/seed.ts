@@ -2,14 +2,21 @@ import { createClient } from "@supabase/supabase-js";
 import { config } from "../src/config.js";
 import { sql } from "../src/db.js";
 
+if (!config.SUPABASE_SERVICE_ROLE_KEY) {
+  throw new Error("Seed needs SUPABASE_SERVICE_ROLE_KEY");
+}
+
 const admin = createClient(config.SUPABASE_URL, config.SUPABASE_SERVICE_ROLE_KEY, {
   auth: { persistSession: false },
 });
 
+// Cloud demo must not reuse the well-known local password.
+const password = process.env.SEED_PASSWORD ?? "password123";
+
 async function createUser(email: string, displayName: string): Promise<string> {
   const { data, error } = await admin.auth.admin.createUser({
     email,
-    password: "password123",
+    password,
     email_confirm: true,
     user_metadata: { display_name: displayName },
   });

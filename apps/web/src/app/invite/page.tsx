@@ -51,7 +51,7 @@ function Invite() {
         <span className="mb-2 inline-flex size-12 items-center justify-center rounded-full bg-accent-soft text-accent-soft-foreground">
           <UsersIcon width={22} height={22} />
         </span>
-        <Card.Title className="font-serif text-2xl">Bạn được mời vào một không gian chung</Card.Title>
+        <Card.Title className="font-serif text-2xl leading-snug">Bạn được mời vào một không gian chung</Card.Title>
         <Card.Description>
           Chấp nhận để cùng lưu kỷ niệm. Kỷ niệm bạn đánh dấu riêng tư vẫn chỉ mình bạn thấy.
         </Card.Description>

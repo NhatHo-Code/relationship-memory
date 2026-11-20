@@ -14,8 +14,9 @@ const envSchema = z.object({
   LOG_LEVEL: z.enum(["debug", "info", "warn", "error"]).default("info"),
   DATABASE_URL: z.url(),
   SUPABASE_URL: z.url(),
-  SUPABASE_ANON_KEY: z.string().min(1),
-  SUPABASE_SERVICE_ROLE_KEY: z.string().min(1),
+  // Only seed and tests need these; the production API verifies JWTs via JWKS.
+  SUPABASE_ANON_KEY: z.string().min(1).optional(),
+  SUPABASE_SERVICE_ROLE_KEY: z.string().min(1).optional(),
   LLM_PROVIDER: z.enum(["fake", "gemini", "openai"]).default("fake"),
   LLM_API_KEY: z.string().optional(),
   EMBEDDING_DIM: z.coerce.number().int().default(768),
